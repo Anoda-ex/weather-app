@@ -19,7 +19,7 @@ body{
     margin: 0 auto;
 }
 .app{
-    background:url("./Images/b3.jpg") no-repeat;
+    background:url("./Assets/Images/b3.jpg") no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -ms-background-size: cover;
@@ -32,10 +32,10 @@ body{
 @mixin flex-b{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 @mixin stroke{
     -webkit-text-stroke: 0.5px black;
-    // -webkit-text-fill-color: white;
 }
 .page-message{
     @include stroke;
@@ -87,8 +87,6 @@ body{
 }
 .selector{
     width: 300px;
-    display: flex;
-    margin: 0 auto;
     position: relative;
     &__search{
         height: 25px;
@@ -199,6 +197,13 @@ body{
         padding: 15px 10px;
         text-align: center;
         font-size: 12px;
+        transition: all 0.2s;
+        &:hover{
+            cursor: pointer;
+            -webkit-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            transform: scale(1.1);
+        }
     }
     &__date{
         font-size: 18px;
@@ -216,7 +221,7 @@ body{
             font-size: 16px;
         }
         &-title{
-            font-size: 14px;
+            font-size: 10px;
             line-height: 10px;
         }
     }

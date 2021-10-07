@@ -18,13 +18,9 @@ function Header(props) {
     return (
         <header className="header">
                 <div className="header__wrapper">
-                    <div className="header__city" onClick={()=>{setShowSelector(!showSelector)}}>{cityName?"Сменить город":"Выбрать город"} </div>
-                    <div  className="header__links">
-                        <NavLink className="header__link" to={"/week"+props.location.search}>Погода на неделю</NavLink>
-                        <NavLink className="header__link" to={"/day"+props.location.search}>Погода на день</NavLink>
-                    </div>
+                    <div className="header__city" onClick={()=>{setShowSelector(!showSelector)}}>{cityName?"Change city":"Select city"} </div>
+                    {showSelector&&<Selector close={()=>{setShowSelector(false)}}></Selector>}
                 </div>
-                {showSelector&&<Selector close={()=>{setShowSelector(false)}}></Selector>}
         </header>
     )
 }

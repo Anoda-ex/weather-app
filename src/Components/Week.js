@@ -1,31 +1,17 @@
 import React,{useState,useEffect} from 'react'
 import { withRouter } from 'react-router'
-import {getCityName,getWeather} from "../Scripts/weatherAPI"
-import {getDayDate, getWeekDate} from "../Scripts/date"
-import SelectCityMessage from './SelectCityMessage'
+import {getWeekDate} from "../Scripts/date"
+import SelectCityMessage from './ErrorMessage'
 function Week(props) {
-    const [weekWeather, setWeekWeather] = useState(null)
-    const [cityName, setCityName] = useState(false)
-    const [loading,setLoading]=useState(false)
-    useEffect(() => {
-        setLoading(true)
-        getCityName(props.location.search).then(
-            (name)=>{setCityName(name)}
-        )
-        getWeather(props.location.search,"week").then(weather=>{setWeekWeather(weather);}).finally(()=>{setLoading(false)})    
-    }, [props.location.search])
-
-    console.log(weekWeather);
-    if(loading){
-        return <div className="page-message">Загрузка...</div>
-    }
-    if(!weekWeather){
+    console.log("heh",props.weather);
+    if(!props.weather){
         return <SelectCityMessage></SelectCityMessage>
     }
     return (
         <div className="week">
-            {weekWeather.map(day=>{
+            {props.weather.map(day=>{
                 let date=getWeekDate(day.dt)
+                console.log("test",day);
                 return <div className="week__card">
                         <div className="week__date-wrapper">
                             <div className="week__day">{date[0]}</div>

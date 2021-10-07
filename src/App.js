@@ -1,44 +1,33 @@
 import './App.scss';
-import React, { useState } from "react"
-import Selector from './Components/Selector';
-import PageNotFound from './Components/PageNotFound';
-import Day from "./Components/Day"
+import React, { useState,useEffect } from "react"
+import PageNotFound from './Components/PageNotFound'
 import Week from "./Components/Week"
-import {Route, Switch, withRouter } from 'react-router';
+import Header from './Components/Header'
+import ErrorMessage from "./Components/ErrorMessage"
+
+import {Route, Switch, withRouter } from 'react-router'
 import * as routes from "./routes"
-import { NavLink } from 'react-router-dom';
-import Header from './Components/Header';
-import SelectCityMessage from './Components/SelectCityMessage';
+import {getWeather} from "./Scripts/weatherAPI"
 function App(props) {
-	// const [cityName, setCityName] = useState(1)
-	// useEffect(() => {
-	// }, [props])
-	// let getWeather = (city) => {
-	// 	fetch(
-	// 		// "http://api.openweathermap.org/data/2.5/forecast?q=Kyiv&exclude=alerts&appid=b4f88a6f724b0b945af35f393ab4d22a"
-	// 		// "http://api.openweathermap.org/data/2.5/weather?q=Kyiv&appid=b4f88a6f724b0b945af35f393ab4d22a&lang=ua"
-	// 		`https://api.openweathermap.org/data/2.5/onecall?lat=${city.lat}&lon=${city.lon}&appid=b4f88a6f724b0b945af35f393ab4d22a`
-	// 	).then(response => {
-	// 		return response.json()
-	// 	}).then(weather => {
-	// 		console.log(weather);
-	// 	}).catch(error => {
-	// 		console.log(error.text())
-	// 	})
-	// }
-	// let selectCityHandler = (city) => {
-	// 	setSelectCityState(city)
-	// 	getWeather(city)
-	// }
+	const [weekWeather, setWeekWeather] = useState(null)
+	const [loading,setLoading]=useState(false)
+	const [error,setError]=useState(null)
+	useEffect(() => {
+        setLoading(true)
+        getWeather(props.location.search).
+			then(weather=>{setWeekWeather(weather)},error=>{setError(error)}).
+			finally(()=>{setLoading(false)}) 
+    }, [props.location.search])
+
 	return (
 		<div className="app">	
 			<Header></Header>
-			<Switch>
-				<Route path={routes.WEEK} component={Week}></Route>
-				<Route path={routes.DAY}  component={Day}></Route>
-
+			{loading&& <div className="page-message">Loading...</div>}
+			{error&&<ErrorMessage>{error}</ErrorMessage>}
+			{weekWeather&&<Switch>
+				<Route path={routes.WEATHER} render={()=><Week weather={weekWeather}></Week>}></Route>
 				<Route path="" component={PageNotFound}></Route>
-			</Switch>
+			</Switch>}
 		</div>
 	);
 }

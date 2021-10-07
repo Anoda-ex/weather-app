@@ -1,2 +1,1 @@
-export const WEEK="/week"
-export const DAY="/day"
+export const WEATHER="/weather"

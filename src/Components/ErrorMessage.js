@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function SelectCityMessage() {
+export default function SelectCityMessage(props) {
     return (
         <div className="page-message">
-            Не выбран город
+            {props.children}
             
         </div>
     )
