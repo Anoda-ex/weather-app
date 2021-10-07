@@ -125,63 +125,6 @@ body{
     }
 }
 
-.day{
-    width: 300px;
-    margin: 0 auto;
-    background-color: $blue;
-    border-radius: 0px 20px ;
-    padding: 30px;
-    &__main-wrapper{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    &__city-name{
-        color: $white;
-        margin-bottom: 20px;
-        font-style: italic;
-        font-weight: 700;
-        
-    }
-    &__image{
-        height: 80px;
-        width: 80px;
-    }
-    &__temp{
-        font-size: 72px;
-        color: $white;
-        font-weight: 400;
-        margin-left: 20px;
-        @include stroke;
-    }
-    &__sub-wrapper{
-        display: flex;
-        justify-content: space-between;
-        color: $black;
-    }
-    &__sub-info{
-        color: $black;
-        text-align: right;
-        font-size: 12px;
-        margin-bottom: 20px;
-
-    }
-    &__date{
-        text-align: center;
-        color: $black;
-        font-size: 20px;
-        margin-bottom: 20px;
-    }
-    &__description{
-        color: $white;
-        text-align: right;
-        font-size: 30px;
-        font-style: italic;
-        font-weight: 700;
-        
-    }
-}
-
 .week{
     width: 700px;
     margin: 0 auto;
