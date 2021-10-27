@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import {withRouter} from "react-router-dom"
-import cities from "../Assets/cities.json"
+import cities from "../Assets/cities"
 function Selector(props) {
     const [searchCities, setSearchCities] = useState(null)
     const [showList, setShowList] = useState(null)

@@ -5,22 +5,7 @@ export const getParams=(searchParams)=>{
     let city=params.get("city");
     return {lat,lon,city}
 }
-export const getCityName=(searchParams)=>{
-    return new Promise((resolve,reject)=>{
-        // const coords=getCoords(searchParams)
-        // if(coords){
-        //     fetch(
-        //         `https://api.openweathermap.org/geo/1.0/reverse?lat=${coords.lat}&lon=${coords.lon}&appid=b4f88a6f724b0b945af35f393ab4d22a`
-        //     ).then(response=>{
-        //         return response.json()
-        //     }).then(cityData=>{
-        //         resolve(cityData[0].name)
-        //     })
-        // }else(
-        //     reject("ошибка")
-        // )
-    })
-}
+
 
 
 
@@ -41,11 +26,10 @@ export const getWeather=(searchParams)=>{
                 }).then(weather => {
                         let weekWeather=[...weather.daily]
                         weekWeather.splice(0,1)
-                        console.log(weather);
                         resolve(weekWeather)
                 })
             }else{
-                reject("Выбраный город не найден")
+                reject("Selected city not found")
             }
 
         }).catch(error=>{return null})
