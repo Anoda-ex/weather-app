@@ -1,13 +1,12 @@
 import './App.scss';
 import React, { useState,useEffect } from "react"
-import PageNotFound from './Components/PageNotFound'
 import Week from "./Components/Week"
 import Header from './Components/Header'
 import ErrorMessage from "./Components/ErrorMessage"
 
-import {Route, Switch, withRouter } from 'react-router'
+import {Route, Switch, withRouter,Redirect } from 'react-router'
 import * as routes from "./routes"
-import {getWeather} from "./Scripts/weatherAPI"
+import {getWeather,getParams} from "./Scripts/weatherAPI"
 function App(props) {
 	const [loading,setLoading]=useState(false)
 	const [weekWeather, setWeekWeather] = useState(null)
@@ -21,6 +20,7 @@ function App(props) {
 			finally(()=>{setLoading(false)}) 
     }, [props.location.search])
 
+	
 	return (
 		<div className="app">	
 			<Header></Header>
@@ -35,7 +35,8 @@ function App(props) {
 						</React.Fragment>
 					)
 				}}></Route>
-				<Route path="" render={()=><ErrorMessage>Page not found</ErrorMessage>}></Route>
+
+				<Redirect exact to="/weather"></Redirect>
 			</Switch>
 		</div>
 	);

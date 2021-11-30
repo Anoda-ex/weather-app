@@ -30,7 +30,8 @@ function Selector(props) {
     let inputRef=React.createRef()
     return (
         <div className="selector">
-            <input placeholder="Enter the name of the city (more than 2 letters)" className="selector__search" onFocus={()=>{setShowList(true)}} onChange={selectCities}></input>    
+            <input placeholder="Enter the name of the city" className="selector__search" onFocus={()=>{setShowList(true)}} onChange={selectCities}></input>  
+            {showList&&<div className="selector__close" onClick={()=>{setShowList(false)}}>&#10006;</div>}
             {searchCities?.length>0&&showList&&<ul className="selector__cities-list">
                 {searchCities.map(city=>{
                     return <li className="selector__cities-item" onClick={()=>{selectCity(city)}}>{city}</li>

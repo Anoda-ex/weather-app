@@ -10,8 +10,12 @@ function Header(props) {
     return (
         <header className="header">
                 <div className="header__wrapper">
-                    <div className="header__city" onClick={()=>{setShowSelector(!showSelector)}}>{cityName?"Change city":"Select city"} </div>
-                    {(showSelector||!cityName)&&<Selector close={()=>{setShowSelector(false)}}></Selector>}
+                    <div className="header__city" onClick={()=>{setShowSelector(!showSelector)}}>{cityName?"Change city":"Search city"} </div>
+                    {(showSelector||!cityName)?
+                        <Selector close={()=>{setShowSelector(false)}}></Selector>
+                        :
+                        <div>{cityName}</div>
+                    }
                 </div>
         </header>
     )

@@ -29,7 +29,11 @@ export const getWeather=(searchParams)=>{
                         resolve(weekWeather)
                 })
             }else{
-                reject("Selected city not found")
+                if(city){
+                    reject("Selected city not found")
+                }else{
+                    reject("City not select")
+                }
             }
 
         }).catch(error=>{return null})

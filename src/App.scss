@@ -48,7 +48,7 @@ body{
 }
 
 .header{
-    padding: 10px 80px;
+    padding: 10px 150px;
     font-size: 22px;
     color: $white;
     &__wrapper{
@@ -88,6 +88,15 @@ body{
 .selector{
     width: 300px;
     position: relative;
+    &__close{
+     
+        font-size: 16px;
+        position: absolute;
+        z-index: 100;
+        top: 0;
+        right: 5px;
+        color: black;
+    }
     &__search{
         height: 25px;
         width: 100%;
@@ -96,6 +105,8 @@ body{
         padding: 5px;
         border-radius: 5px;
         border: none;
+        position: relative;
+      
     }
     &__cities{
         &-list{
@@ -126,14 +137,14 @@ body{
 }
 
 .week{
-    width: 700px;
+    width: 750px;
     margin: 0 auto;
 
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     &__card{
-        width: 150px;
+        width: 170px;
         background-color: $blue;
         border-radius: 0px 20px;
         margin-bottom: 20px;
@@ -151,9 +162,14 @@ body{
     &__date{
         font-size: 18px;
     }
+    &__image{
+        height: 60px;
+        width: 60px;
+    }
     &__temp{
+        
         &-description{
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-size: 16px;
         }
         &-wrapper{
@@ -188,7 +204,7 @@ body{
     }
     &__city-name{
         color: $white;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         font-style: italic;
         font-weight: 700;
 
@@ -202,8 +218,23 @@ body{
         color: $white;
         font-weight: 400;
         margin-left: 20px;
+        
         @include stroke;
+        &-wrapper{
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 10px;
+
+        }
+        &-value{
+            font-size: 16px;
+        }
+        &-title{
+            font-size: 10px;
+            line-height: 10px;
+        }
     }
+
     &__sub-wrapper{
         display: flex;
         justify-content: space-between;
@@ -216,19 +247,12 @@ body{
         margin-bottom: 10px;
 
     }
-    &__maxmin-wrapper{
-        text-align-last: right;
-        margin-bottom: 10px;
-        font-size: 12px;
-        span+span{
-            margin-left: 15px;
-        }
-    }
+
     &__date{
         text-align: center;
         color: $black;
         font-size: 20px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
     &__description{
         color: $white;
@@ -241,39 +265,67 @@ body{
 }
 
 
-.test{
-    height: 100px;
-    overflow:auto;
-    // overflow-y: auto;
-    display: block;
-}
-@media (max-width: 830px) {
-    .header{
-        &__wrapper{
-            flex-direction: column-reverse;
-            text-align: center;
-        }
-    }
+
+@media (max-width: 800px) {
+
+    
     .week{
-        width: 500px;
+        width: 600px;
     }
 }
 @media (max-width: 630px) {
     .header{
         padding: 20px;
-        &__wrapper{
-            flex-direction: column-reverse;
-            text-align: center;
-        }
+
         &__link{
             font-size: 18px;
             &.active{
                 border: none;
             }
         } 
+        &__city{
+            font-size: 20px;
+    
+        }
+        .selector{
+            width: 230px;
 
+        }
     }
     .week{
         width: 350px;
+        &__card{
+                width: 160px;
+        }
+    }
+    .day{
+        width: 300px;
+        &__description{
+            text-align: center;
+        }
+    }
+}
+@media (max-width: 400px) {
+    .header{
+        padding: 20px;
+
+        &__city{
+            font-size: 16px
+        }
+        .selector{
+            width: 200px;
+        }
+    }
+    .week{
+        width: 280px;
+        &__card{
+            width: 130px;
+        }
+        .day{
+            width: 260px;
+            &__description{
+                font-size: 26px;
+            }
+        }
     }
 }

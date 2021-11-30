@@ -20,11 +20,17 @@ function Day(props) {
                         <div className="day__sub-info">humidity {dayWeather.humidity}%</div>
                         <div className="day__sub-info">feels like {Math.round(dayWeather.feels_like.day)}°C</div>
                     </div>
-                    <div className="day__maxmin-wrapper">
-                        <span>max {dayWeather.temp.max}°C</span>
-                        <span>min {dayWeather.temp.min}°C</span>
-                    
-                    </div>
+              
+                    <div className="day__temp-wrapper">
+                            <div className="day__temp-column">
+                                <div className="day__temp-value">{Math.floor(dayWeather.temp.min)}</div>
+                                <div className="day__temp-title">min</div>
+                            </div>
+                            <div className="day__temp-column">
+                                <div className="day__temp-value">{Math.floor(dayWeather.temp.max)}</div>
+                                <div className="day__temp-title">max</div>
+                            </div>
+                        </div>
                     <div className="day__date">{dateString}</div>
 
                     <div className="day__description">{dayWeather.weather[0].description}</div>

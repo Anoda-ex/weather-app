@@ -4,7 +4,7 @@ import {getWeekDate} from "../Scripts/date"
 import SelectCityMessage from './ErrorMessage'
 import DayCardFull from "./DayCardFull"
 function Week(props) {
-    const [selectedCard, setSelectedCard] = useState(null)
+    const [selectedCard, setSelectedCard] = useState(-1)
     if(!props.weather){
         return <SelectCityMessage></SelectCityMessage>
     }
@@ -14,7 +14,7 @@ function Week(props) {
             {props.weather.map((day,dayIndex)=>{
                 let date=getWeekDate(day.dt)
                 let dayWeatherFull=null 
-                if(selectedCard && dayIndex==3){
+                if(selectedCard>-1 && dayIndex==3){
                     dayWeatherFull=<DayCardFull dayWeather={props.weather[selectedCard]}></DayCardFull>
                 }
                 return <React.Fragment>
@@ -25,7 +25,7 @@ function Week(props) {
                             <div className="week__date">{date[1]}</div>
                             <div className="week__month">{date[2]}</div>  
                         </div>
-                        <img className="day__image" src={`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`} alt=""></img>
+                        <img className="week__image" src={`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`} alt=""></img>
                         <div className="week__temp-description">{day.weather[0].description}</div>
                         <div className="week__temp-wrapper">
                             <div className="week__temp-column">
